@@ -59,5 +59,16 @@ create table ekwipunek ( id_ekwipunku int(11) primary key, id_kreatury int(11), 
 alter table ekwipunek add foreign key (id_kreatury) references kreatura(id_kreatury);
 alter table ekwipunek add foreign key (id_zasobu) references zasob(id_zasobu);
 
+drop table ekwipunek;
+drop table kreatura;
+drop table zasob;
+
+
+create table kreatura select * from wikingowie.kreatura;
+create table zasob select * from wikingowie.zasob;
+create table ekwipunek select * from wikingowie.ekwipunek;
+
+
  # 2)
  
+ # iz_zasobu=1 or id_zasobu=3 ir id_zasobu=5;
