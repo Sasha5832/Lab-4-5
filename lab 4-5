@@ -1,0 +1,63 @@
+# zadanie 4
+# a)
+desc postac;
+desc marynarz;
+desc statek;
+select * from postac;
+select * from marynarz;
+select * from statek;
+# insert into postac values ('62366353461', default, 
+
+# b)
+# 1 wariant
+# create table marynarz like postac;
+# insert into marynarz select ... from postac;
+# 2 wariant
+# create table marynarz select * from postac where...;
+create table marynarz select * from postac where statek is not null;
+ drop table marynarz;
+ 
+alter table marynarz add primary key(pesel);
+alter table statek add foreign key(nazwa_statku) references marynarz(pesel);
+ # zadanie 5
+ # a)
+update marynarz set statek = null;
+ # b)
+ 
+ delete from marynarz where id_postaci=8;
+ # c)
+delete from statek;
+ alter table statek drop foreign key statek_ibfk_1;
+ alter table postac drop foreign key postac_ibfk_1;
+
+ # d) 
+  drop table statek;
+  
+  # e)
+  
+
+   create table zwierz ( id_zwierza int auto_increment primary key, nazwa varchar(255), wiek int(255)); 
+  drop table zwierz;
+  desc zwierz;
+ select * from zwierz;
+ select * from postac;
+ 
+ # f)
+ 
+# insert into zwierz select nazwa and wiek from postac where rodzaj='wez' or rodzaj='ptak' or rodzaj='syrena';
+ 
+insert into zwierz select * from postac where rodzaj in ('wez', 'ptak', 'syrena');
+
+# lab 5;
+
+# zadanie 1
+# 1)
+create table ekwipunek ( id_ekwipunku int(11) primary key, id_kreatury int(11), id_zasobu int (11), ilosc int(10)); 
+ select * from ekwipunek;
+ create table kreatura ( id_kreatury int(11) primary key, nazwa varchar(30), rodzaj varchar(30), data_ur date, waga int(10), udzwig int(10));
+ create table zasob ( id_zasobu int(11) primary key, nazwa varchar(50), waga float(6,2), ilosc int(10), data_pozyskania date, rodzaj varchar(50));
+alter table ekwipunek add foreign key (id_kreatury) references kreatura(id_kreatury);
+alter table ekwipunek add foreign key (id_zasobu) references zasob(id_zasobu);
+
+ # 2)
+ 
